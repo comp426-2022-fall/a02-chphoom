@@ -30,19 +30,21 @@ if(args.n && !args.s){
 	latitude = args.n;
 } else if(args.s && !args.n){
 	latitude = -1 * args.s;
-} else {
-	console.log("Must use -n or -s to speciy the latitude, -h for help");
-	process.exit(1);
-}
+} 
+// else {
+// 	console.log("Must use -n or -s to speciy the latitude, -h for help");
+// 	process.exit(1);
+// }
 
 if(args.e && !args.w){
 	longitude = args.e;
 } else if(args.w && !args.e){
 	longitude = -1 * args.w;
-} else {
-	console.log("Must use -e or -w to speciy the longitude, -h for help");
-	process.exit(1);
-}
+} 
+// else {
+// 	console.log("Must use -e or -w to speciy the longitude, -h for help");
+// 	process.exit(1);
+// }
 
 let timezone =  args.z ? args.z : moment.tz.guess();
 //use tz.guest by default
@@ -62,11 +64,10 @@ const response = await fetch(url);
 // Get the data from the request
 const data = await response.json();
 
-// if(data.error) {
-// 	console.log(data.reason + "\n");
-// 	process.exit(1);
-// }else 
-if(args.j) {
+if(data.error) {
+	console.log(data.reason + "\n");
+	process.exit(1);
+}else if(args.j) {
 	console.log(data);
     process.exit(0);
 }
