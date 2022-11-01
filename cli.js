@@ -72,6 +72,12 @@ if(data.error) {
 
 const days = args.d 
 
+
+if(data.daily.precipitation_hours[days] != 0){
+    console.log("You might need your galoshes");
+}else{
+    console.log("You will not need your galoshes");
+}
 // Below, we've defined days corresponding to the command line argument -d. We'll assume args is defined from minimist's output, which is the parsed command line arguments.
 
 if (days == 0) {
@@ -82,11 +88,7 @@ if (days == 0) {
   console.log("tomorrow.")
 }
 
-if(data.daily.precipitation_hours[days] != 0){
-    console.log("You might need your galoshes");
-}else{
-    console.log("You will not need your galoshes");
-}
+
 
 console.log(data);
 process.exit(0);
