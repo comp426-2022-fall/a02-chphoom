@@ -32,7 +32,7 @@ if(args.n && !args.s){
 	latitude = -1 * args.s;
 } else {
 	console.log("Must use -n or -s to speciy the latitude, -h for help");
-	process.exit(1);
+	//process.exit(1);
 }
 
 if(args.e && !args.w){
@@ -41,7 +41,7 @@ if(args.e && !args.w){
 	longitude = -1 * args.w;
 } else {
 	console.log("Must use -e or -w to speciy the longitude, -h for help");
-	process.exit(1);
+	//process.exit(1);
 }
 
 let timezone =  args.z ? args.z : moment.tz.guess();
