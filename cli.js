@@ -23,28 +23,26 @@ function printHelp() { //helper function
 }//end help
 
 let d = args.d;
-let latitude;
-let longitude; 
+let latitude=0;
+let longitude=0; 
 
 if(args.n && !args.s){
 	latitude = args.n;
 } else if(args.s && !args.n){
 	latitude = -1 * args.s;
-} 
-// else {
-// 	console.log("Must use -n or -s to speciy the latitude, -h for help");
-// 	process.exit(1);
-// }
+} else {
+	console.log("Must use -n or -s to speciy the latitude, -h for help");
+	process.exit(1);
+}
 
 if(args.e && !args.w){
 	longitude = args.e;
 } else if(args.w && !args.e){
 	longitude = -1 * args.w;
-} 
-// else {
-// 	console.log("Must use -e or -w to speciy the longitude, -h for help");
-// 	process.exit(1);
-// }
+} else {
+	console.log("Must use -e or -w to speciy the longitude, -h for help");
+	process.exit(1);
+}
 
 let timezone =  args.z ? args.z : moment.tz.guess();
 //use tz.guest by default
