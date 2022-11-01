@@ -62,10 +62,11 @@ const response = await fetch(url);
 // Get the data from the request
 const data = await response.json();
 
-if(data.error) {
-	console.log(data.reason + "\n");
-	process.exit(1);
-}else if(args.j) {
+// if(data.error) {
+// 	console.log(data.reason + "\n");
+// 	process.exit(1);
+// }else 
+if(args.j) {
 	console.log(data);
     process.exit(0);
 }
