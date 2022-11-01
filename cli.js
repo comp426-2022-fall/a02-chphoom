@@ -54,7 +54,7 @@ let timezone =  args.z ? args.z : moment.tz.guess();
 
 const base_url = "https://api.open-meteo.com/v1/forecast"
 
-const data_string = "latitude=" + latitude + "&longitude=" + longitude +"&daily=precipitation_sum&timezone=" + timezone
+const data_string = "latitude=" + latitude + "&longitude=" + longitude +"&daily=precipitation_hours&timezone=" + timezone
 
 const url = base_url + "?" + data_string
 
@@ -71,28 +71,30 @@ if(data.error) {
 }
 
 const days = args.d 
-function printGaloshes(data, days) {
+
+// Below, we've defined days corresponding to the command line argument -d. We'll assume args is defined from minimist's output, which is the parsed command line arguments.
+if (days == 0) {
 	if(data.daily.precipitation_hours[days] != 0){
 		console.log("You might need your galoshes");
 	}else{
 		console.log("You will not need your galoshes");
 	}
-}//end helper
-
-// Below, we've defined days corresponding to the command line argument -d. We'll assume args is defined from minimist's output, which is the parsed command line arguments.
-
-if (days == 0) {
-	printGaloshes(data, days);
   console.log("today.")
 } else if (days > 1) {
-	printGaloshes(data, days);
+	if(data.daily.precipitation_hours[days] != 0){
+		console.log("You might need your galoshes");
+	}else{
+		console.log("You will not need your galoshes");
+	}
   console.log("in " + days + " days.")
 } else {
-	printGaloshes(data, days);
+	if(data.daily.precipitation_hours[days] != 0){
+		console.log("You might need your galoshes");
+	}else{
+		console.log("You will not need your galoshes");
+	}
   console.log("tomorrow.")
 }
-
-
 
 console.log(data);
 process.exit(0);
